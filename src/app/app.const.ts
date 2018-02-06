@@ -1,0 +1,1 @@
+export const API_URL:string  = "http://ebsexpress-env.us-west-2.elasticbeanstalk.com";

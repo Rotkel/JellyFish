@@ -1,0 +1,51 @@
+<div>
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Dep ID. </mat-header-cell>
+      <mat-cell *matCellDef="let department"> {{department.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let department">
+        <a (click)="goToDepUsers(department.id)"> {{department.name}}</a>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let department"> {{department.description}} </mat-cell>
+    </ng-container>
+
+    
+    <!-- Action Add Department -->
+    <ng-container matColumnDef="AddDep">
+      <mat-header-cell *matHeaderCellDef>Add Department</mat-header-cell>
+      <mat-cell *matCellDef="let department"> 
+        <button mat-raised-button color="primary" (click)="openDialog()" >Add</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Action Remove Department -->
+    <ng-container matColumnDef="DeleteDep">
+      <mat-header-cell *matHeaderCellDef>Remove Department</mat-header-cell>
+      <mat-cell *matCellDef="let department; let i = index">
+        <button mat-raised-button color="warn" (click)="removeDep(i, department.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Input">
+  </mat-form-field>
+</div>
